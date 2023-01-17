@@ -4,8 +4,6 @@ public class Calendar{
       Scanner input = new Scanner(System.in);
       System.out.println("Enter the Year :- ");
       int year = input.nextInt();
-      Long freeMemory = Runtime.getRuntime().freeMemory();
-      long start = System.nanoTime();
       boolean flag = ((year%400)==0 || (year%4 == 0)&&(year%100)!=0)? true:false;
       String[] month = {"JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
       String week = "Sun Mon Tue Wed Thu Fri Sat";
@@ -57,14 +55,6 @@ public class Calendar{
         } 
         day =next;
         System.out.println();
-      }  
-      long end = System.nanoTime();
-      Long freeMem = Runtime.getRuntime().freeMemory();
-      System.out.println(start);
-      System.out.println(end);
-      System.out.println(end - start);
-      System.out.println(freeMemory);
-      System.out.println(freeMem);
-      System.out.println(freeMem - freeMemory);
+      }
     }
 }
