@@ -1,0 +1,19 @@
+public class Solution {
+    public boolean isPalindrome(int x) {
+        int y = 0, z = x;
+        while(z>0){
+            y *= 10;
+            y += z % 10;
+            z /= 10;
+        }  
+        if (x-y == 0)
+        return true;
+        else
+        return false;
+    }
+    public static void main(String[] args){
+    int x = 121;
+    Solution sol = new Solution();
+    System.out.println(sol.isPalindrome(x));
+    } 
+}
