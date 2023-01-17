@@ -1,0 +1,70 @@
+import java.util.*;
+public class Calendar{
+   public static void main(String args[]){
+      Scanner input = new Scanner(System.in);
+      System.out.println("Enter the Year :- ");
+      int year = input.nextInt();
+      Long freeMemory = Runtime.getRuntime().freeMemory();
+      long start = System.nanoTime();
+      boolean flag = ((year%400)==0 || (year%4 == 0)&&(year%100)!=0)? true:false;
+      String[] month = {"JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
+      String week = "Sun Mon Tue Wed Thu Fri Sat";
+      int yearCode = 0,date = 0,num = 0,next = 0,day = 0;
+      if ((year/100)%4 == 0)
+        yearCode = 6;
+      else if ((year/100)%4 == 1)
+        yearCode = 4; 
+      else if ((year/100)%4 == 2)
+        yearCode = 2; 
+        if(flag)
+        day = ((year%100)+ ((year%100)/4) +yearCode)%7; 
+        else
+        day = ((year%100)+ ((year%100)/4)+ 1 +yearCode)%7; 
+      System.out.print("\t  "+year);
+      for (int i=0; i<12; i++){
+         date = 1;
+        System.out.println("\n\t"+month[i]);
+        System.out.print(week);
+        if (i==0 || i==2 || i==4 || i==6 || i==7 || i==9 || i==11)
+        num = 31;
+        else if (i==10 || i==3 || i==5 || i==0 || i==8)
+        num = 30;
+        else if (i == 1){
+            if (flag)
+            num = 29;
+            else
+            num = 28;
+        }
+        while (date <= num){
+        System.out.println();
+         aa:
+          for(int j=0; j<7; j++){
+            next =0;
+            if (date > num){
+            next = j;
+            break aa;
+            }
+            if (j >= day){
+                if(date<10) 
+                System.out.print(" "+date++ +"  ");
+                else
+                System.out.print(" "+date++ +" ");
+            }
+            else
+            System.out.print("    ");
+          } 
+        day = 0;
+        } 
+        day =next;
+        System.out.println();
+      }  
+      long end = System.nanoTime();
+      Long freeMem = Runtime.getRuntime().freeMemory();
+      System.out.println(start);
+      System.out.println(end);
+      System.out.println(end - start);
+      System.out.println(freeMemory);
+      System.out.println(freeMem);
+      System.out.println(freeMem - freeMemory);
+    }
+}
