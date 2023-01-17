@@ -1,0 +1,76 @@
+import java.util.*;
+
+public class Array_List{
+    static int size = 0, length = 5;
+    static int[] numArray = new int[length];
+    static int x = 0, y = 0, choice = 0;
+
+    public static void insert(int x){
+        if(size == length){
+            int[] temp = numArray; 
+            length += 5;
+            numArray = new int[length];
+            for(int i=0; i<size; i++)
+              numArray[i] = temp[i];
+        } 
+        numArray[size++]=x;
+    }
+    public static void print(int numArray[]){
+        String result = "[ ";
+        for(int i=0; i<size;i++){
+            if(i!=size-1){
+                result += numArray[i]+", ";
+            }
+            else
+            result += numArray[i];
+        }
+        result += " ]";
+        System.out.println(result);
+    }
+    public static void delete(int x){
+        int pos = 0, i = 0;
+        outer:
+        for(i=0; i<size; i++){
+            if(numArray[i]==x){
+             pos = i;
+             size--;
+             break outer;
+            }
+        }
+        if(i==size)
+              return;
+        for(i = pos; i<size; i++){
+            numArray[i]=numArray[i+1];
+        }
+    }
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter your Choice :- ");
+        System.out.println("1) Insert Value. \n2) Delete Value. \n3) Exit.");
+        
+        while(choice!=3){
+            choice = input.nextInt();
+            switch(choice){
+                case 1:
+                System.out.print("Enter the Insertion Value :- ");
+                x = input.nextInt();
+                insert(x);
+                print(numArray);
+                break;
+                case 2:
+                System.out.print("Enter the Deletion Value :- ");
+                y = input.nextInt();
+                delete(y);
+                print(numArray);
+                break;
+                case 3:
+                System.exit(0);
+                break;
+                default :
+                System.out.println("Invalid Input...");
+                break;
+            }
+        } 
+        
+    }
+}
