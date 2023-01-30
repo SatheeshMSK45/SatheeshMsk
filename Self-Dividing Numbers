@@ -1,0 +1,18 @@
+class Solution {
+    public  List<Integer> selfDividingNumbers(int left, int right) {
+        List<Integer> list = new ArrayList<>();
+        for(int i = left; i<=right; i++){
+            int num = i,sum=0;
+            inner:
+            while(num>0){
+                sum = num % 10;
+                if(sum == 0 || i % sum != 0)
+                    break inner;
+                num /= 10; 
+            }
+            if(num<=0)
+                list.add(i);
+        }
+        return list;
+    }
+}
