@@ -1,0 +1,16 @@
+class Solution {
+    public boolean checkPerfectNumber(int num) {
+        int sum = num,total = 1;
+        if(num == 1 || num % 2 != 0)
+            return false;
+        for(int i =2; i<num; i++){
+            if(sum % i == 0){
+                num = (sum/i);
+                total += i + num;
+            }
+        }
+        if(total == sum)
+            return true;
+        return false;
+    }
+}
