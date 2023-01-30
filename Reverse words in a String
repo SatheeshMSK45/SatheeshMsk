@@ -1,0 +1,18 @@
+class Solution {
+    public String reverseWords(String s) {
+        String str = s.trim();
+        String[] arr = str.split(" ");
+        StringBuilder reverse =new StringBuilder();
+        for(int i = arr.length-1; i>=0; i--){
+            if(arr[i] != ""){
+                if(i != 0)
+                    reverse.append(arr[i]).append(" ");
+                else
+                    reverse.append(arr[i]);
+            }
+        }
+
+        String reverseOrder = reverse.toString();
+        return reverseOrder;    
+    }
+}
