@@ -1,0 +1,44 @@
+public class Solution{
+  public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        Solution sol = new Solution();
+        String str = input.nextLine();
+        System.out.println(sol.romanToInt(str));
+    }
+    public int romanToInt(String s) {
+        char[] ch = s.toCharArray();
+        int value = 0,result = 0, row = s.length()-1;
+
+    for(int i=row; i>=0; i--){
+        switch(ch[i]){
+            case 'I':
+                value = 1;
+                break;
+            case 'V':
+                value = 5;
+                break;
+            case 'X':
+                value = 10;
+                break;
+            case 'L':
+                value = 50;
+                break;
+            case 'C':
+                value = 100;
+                break;
+            case 'D':
+                value = 500;
+                break;
+            case 'M':
+                value = 1000;
+                break;    
+        }
+        if(4*value < result)
+            result -= value;
+        else 
+            result += value;    
+    }
+            
+        return result;
+    }
+ }
