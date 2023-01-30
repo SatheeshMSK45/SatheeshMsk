@@ -1,0 +1,12 @@
+class Solution {
+    public int countDigits(int num) {
+        int sum = num,count=0,temp=0;
+        while(sum > 0 ){
+            temp = sum % 10;
+            sum /= 10;
+            if(num % temp == 0)
+                count++;
+        }
+        return count;
+    }
+}
