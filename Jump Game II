@@ -1,0 +1,15 @@
+class Solution {
+    public int jump(int[] nums) {
+        int size = nums.length;
+    int[] jump = new int[size];
+    for (int i = 1; i < size; i++) {
+        jump[i] = Integer.MAX_VALUE;
+    }
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 1; j <= nums[i] && i + j < size; j++) {
+            jump[i + j] = Math.min(jump[i + j], jump[i] + 1);
+        }
+    }
+    return jump[size - 1]; 
+    }
+}
